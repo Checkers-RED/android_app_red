@@ -37,4 +37,6 @@
     <string name="sec_30">30</string>
     <string name="move_time">Время на ход (секунды)</string>
     <string name="invite">Пригласить</string>
+    <string name="oh_shit_go_back">Вернуться назад</string>
+    <string name="search_friend">Поиск друга</string>
 </resources>

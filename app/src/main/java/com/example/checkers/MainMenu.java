@@ -2,6 +2,7 @@ package com.example.checkers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
@@ -24,7 +25,9 @@ public class MainMenu extends AppCompatActivity {
     Boolean flagSearchRanked = false;
     Boolean flagFriend = false;
     Boolean flagInvite = false;
-    String[] countries = { "Русские шашки", "Ублюдские шашки", "Мудацкие шашки", "Я ща твоей матери ебало разобью"};
+    Boolean flagPlayTour = false;
+    Boolean flagCreateTour = false;
+    String[] countries = { "Русские шашки",  "Английские шашк", "Турецкие шашки"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class MainMenu extends AppCompatActivity {
         Button startSearchRanked = (Button) findViewById(R.id.startSearch);
         ImageButton infoBtn = (ImageButton)  findViewById(R.id.infoBtn);
         Button inviteBtn = (Button) findViewById(R.id.inviteBtn);
+        Button addFriendBtn = (Button) findViewById(R.id.addFriendBtn);
 
         ScrollView notifications = (ScrollView) findViewById(R.id.notifications);
         ScrollView mainMenuList = (ScrollView) findViewById(R.id.main_menu_list);
@@ -49,6 +53,14 @@ public class MainMenu extends AppCompatActivity {
         ImageView searchIcon = (ImageView) findViewById(R.id.searchIcon);
         ImageView searchIcon2 = (ImageView) findViewById(R.id.searchIcon2);
         ImageView searchIcon3 = (ImageView) findViewById(R.id.searchIcon3);
+
+        addFriendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, AddFriend.class);
+                startActivity(intent);
+            }
+        });
 
         inviteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +92,8 @@ public class MainMenu extends AppCompatActivity {
                 if(flagSearchRanked){
                     searchIcon.setVisibility(View.VISIBLE);
                     startSearchRanked.setText(R.string.stop_search);
+                    playTourBtn.setBackgroundResource(R.drawable.other_btn_default);
+                    createTourBtn.setBackgroundResource(R.drawable.other_btn_default);
                 }
                 else{
                     searchIcon.setVisibility(View.GONE);
@@ -103,6 +117,32 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
+        playTourBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flagPlayTour = !flagPlayTour;
+                if(flagPlayTour){
+                    playTourBtn.setBackgroundResource(R.drawable.other_btn_pressed);
+                }
+                else{
+                    playTourBtn.setBackgroundResource(R.drawable.other_btn_default);
+                }
+            }
+        });
+
+        createTourBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flagCreateTour = !flagCreateTour;
+                if(flagCreateTour){
+                    createTourBtn.setBackgroundResource(R.drawable.other_btn_pressed);
+                }
+                else{
+                    createTourBtn.setBackgroundResource((R.drawable.other_btn_default));
+                }
+            }
+        });
+
         playBotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +156,8 @@ public class MainMenu extends AppCompatActivity {
                     playTourBtn.setVisibility(View.GONE);
                     createTourBtn.setVisibility(View.GONE);
                     rankedMenu.setVisibility(View.GONE);
+                    searchIcon.setVisibility(View.GONE);
+                    startSearchRanked.setText(R.string.start_search);
                 }
                 else{
                     playBotBtn.setBackgroundResource(R.drawable.other_btn_default);
