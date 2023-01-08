@@ -26,8 +26,8 @@
     <string name="play_with_bot">Игра с ботом</string>
     <string name="friends_list">Список друзей</string>
     <string name="main_menu">Главное меню</string>
-    <string name="nikname">PussyDestroyer</string>
     <string name="points">1005 очков</string>
+    <string name="nikname">Никнейм</string>
     <string name="nikname1">Никнейм_1</string>
     <string name="add_friend">Добавить друга</string>
     <string name="invitation_to_play">Приглашение сыграть с Никнейм_1</string>
@@ -39,4 +39,8 @@
     <string name="invite">Пригласить</string>
     <string name="oh_shit_go_back">Вернуться назад</string>
     <string name="search_friend">Поиск друга</string>
+    <string name="yout_turn">Ваш ход</string>
+    <string name="last_moves">Последние ходы</string>
+    <string name="random_move">B2-A3 A7-B6</string>
+    <string name="random_move1">G3-H3</string>
 </resources>

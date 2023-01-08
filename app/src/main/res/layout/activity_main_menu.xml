@@ -361,7 +361,9 @@
             <ScrollView
                 android:id="@+id/main_menu_list"
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="214dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/scroll_view"
                 app:layout_constraintTop_toBottomOf="@+id/view"
                 android:visibility="visible">
 
