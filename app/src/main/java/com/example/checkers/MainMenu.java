@@ -58,7 +58,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, AddFriend.class);
-                startActivity(intent);
+                startActivity(intent );
             }
         });
 
