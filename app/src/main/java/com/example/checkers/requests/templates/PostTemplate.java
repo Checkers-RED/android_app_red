@@ -1,10 +1,8 @@
-package com.example.checkers;
-
-import android.os.AsyncTask;
-import android.widget.EditText;
-import android.widget.TextView;
+package com.example.checkers.requests.templates;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.Globals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,34 +13,10 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class IventPost extends AppCompatActivity {
-    String ip_address = "http://85.143.223.149";
-    String ip_port = "2020";
+public class PostTemplate extends AppCompatActivity {
+    public static ArrayList<String> makeResponse(String path, String json) throws IOException {
 
-    public ArrayList<String> postIvent(TextView textView1, TextView textView2, String json){
-        AsyncTask.execute(() -> {
-            try {
-                ArrayList<String> response;
-                response = buttonPostClick(textView1, textView2, json);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-
-        return null;
-    }
-
-    private ArrayList<String> buttonPostClick(TextView textView1, TextView textView2, String json) throws IOException {
-        String data = json;
-
-        ArrayList<String> response = postTemplate(data);
-        return response;
-
-    }
-
-    private ArrayList<String> postTemplate(String data) throws IOException {
-
-        URL IPAddress = new URL(ip_address + ":" + ip_port + "/TestConnection/");
+        URL IPAddress = new URL(Globals.getIpAddress() + ":" + Globals.getIpPort() + path);
         HttpURLConnection URLConnection = null;
 
         try {
@@ -56,7 +30,7 @@ public class IventPost extends AppCompatActivity {
 
             //Преобразуем входные данные в байт-код
             OutputStream outputStream = URLConnection.getOutputStream();
-            byte[] input = data.getBytes(StandardCharsets.UTF_8);
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
             outputStream.write(input, 0, input.length);
 
             //Читаем поток данных от сервера = выполняем запрос к серверу

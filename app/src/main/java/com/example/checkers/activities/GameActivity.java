@@ -1,8 +1,10 @@
-package com.example.checkers;
+package com.example.checkers.activities;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.checkers.R;
 
 public class GameActivity extends AppCompatActivity {
 

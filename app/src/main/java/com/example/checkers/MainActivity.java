@@ -1,19 +1,12 @@
 package com.example.checkers;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +14,36 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.activities.MainMenu;
+import com.example.checkers.activities.RegisterWindow;
+import com.example.checkers.activities.passwordRecovery;
+import com.example.checkers.requests.templates.GetTemplate;
+import com.example.checkers.requests.user.Authorization;
 
 public class MainActivity extends AppCompatActivity {
+
+    private void asyncAuthorization(String nick, String pass) {
+        Intent intent = new Intent(MainActivity.this, MainMenu.class);
+
+        AsyncTask.execute(() -> {
+            try {
+                Authorization.authorize(Authorization.stringAuthorize(nick, pass));
+                if (!Globals.getCurrentSession().equals("")) {
+                    runOnUiThread(() -> {
+                        try {
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +55,18 @@ public class MainActivity extends AppCompatActivity {
         Button forgotPassword = (Button) findViewById(R.id.forgotPassword);
         ImageButton logButton = (ImageButton) findViewById(R.id.exitBtn);
         ImageButton eyeBtn = (ImageButton) findViewById(R.id.eyeBtn);
+        EditText usernameInput = (EditText) findViewById(R.id.editTextTextPersonName);
         EditText passInput = (EditText) findViewById(R.id.passInput);
-
-
 
 
         //___________Buttons____________//
         eyeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(passInput.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                if (passInput.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
                     eyeBtn.setBackgroundResource(R.drawable.hide_password);
                     passInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-                else{
+                } else {
                     eyeBtn.setBackgroundResource(R.drawable.hide_password_active);
                     passInput.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
@@ -58,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainMenu.class);
-                startActivity(intent);
+                String nick = usernameInput.getText().toString();
+                String pass = passInput.getText().toString();
+
+                asyncAuthorization(nick, pass);
             }
         });
 
@@ -80,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     public void showSettingsMenu(View view) {
@@ -95,12 +114,14 @@ public class MainActivity extends AppCompatActivity {
         String text = "text";
         Log.i(text, "hey");
 
-       IventGet getIvent = new IventGet();
+        GetTemplate getIvent = new GetTemplate();
 
+       /*
        getIvent.getIvent();
 
        text = getIvent.getTextView1();
        textView2.setText(text);
+        */
 
     }
 }

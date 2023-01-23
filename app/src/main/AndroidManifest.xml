@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,49 +15,49 @@
         android:theme="@style/Theme.Checkers"
         tools:targetApi="31">
         <activity
-            android:name=".GameActivity"
+            android:name=".activities.GameActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddFriend"
+            android:name=".activities.AddFriend"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainMenu"
+            android:name=".activities.MainMenu"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PasswordChange"
+            android:name=".activities.PasswordChange"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ControlQuestion"
+            android:name=".activities.ControlQuestion"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".passwordRecovery"
+            android:name=".activities.passwordRecovery"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterWindow"
+            android:name=".activities.RegisterWindow"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

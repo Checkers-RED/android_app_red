@@ -1,6 +1,4 @@
-package com.example.checkers;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.checkers.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.R;
 
 public class MainMenu extends AppCompatActivity {
 

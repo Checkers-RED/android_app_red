@@ -1,10 +1,7 @@
-package com.example.checkers;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.checkers.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MenuInflater;
@@ -13,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.MainActivity;
+import com.example.checkers.R;
 
 public class PasswordChange extends AppCompatActivity {
 

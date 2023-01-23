@@ -1,9 +1,7 @@
-package com.example.checkers;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.checkers.activities;
 
 import android.content.Intent;
-import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -15,7 +13,35 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.Globals;
+import com.example.checkers.MainActivity;
+import com.example.checkers.R;
+import com.example.checkers.requests.user.Registration;
+
 public class RegisterWindow extends AppCompatActivity {
+
+    private void asyncRegistration(String nick, String pass, String ques, String ans) {
+        Intent intent = new Intent(RegisterWindow.this, MainMenu.class);
+
+        AsyncTask.execute(() -> {
+            try {
+                Registration.register(Registration.stringRegister(nick, pass, ques, ans));
+                if (!Globals.getCurrentSession().equals("")) {
+                    runOnUiThread(() -> {
+                        try {
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,18 +118,9 @@ public class RegisterWindow extends AppCompatActivity {
                 String pass2 = passRepeat.getText().toString();
                 String ques = question.getText().toString();
                 String ans = answer.getText().toString();
-                String json;
 
                 if(pass.equals(pass2)){
-                    User.setNick(nick);
-                    User.setPass(pass);
-                    User.setQues(ques);
-                    User.setAns(ans);
-
-                    json = User.stringRegister();
-                    IventPost postIvent = new IventPost();
-                    postIvent.postIvent(textView1, textView2, json);
-
+                    asyncRegistration(nick, pass, ques, ans);
                 }
             }
         });

@@ -1,11 +1,13 @@
-package com.example.checkers;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.checkers.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkers.R;
 
 public class AddFriend extends AppCompatActivity {
 
