@@ -4,9 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/text_view_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="absdghdhg"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="376dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -25,13 +38,13 @@
             android:textSize="30sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layout_custom"
-        android:paddingLeft="1dp"
-        android:paddingTop="1dp"
-        android:paddingRight="1dp"
-        android:paddingBottom="1dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_custom"
+            android:paddingLeft="1dp"
+            android:paddingTop="1dp"
+            android:paddingRight="1dp"
+            android:paddingBottom="1dp">
 
             <LinearLayout
                 android:id="@+id/list"
@@ -84,7 +97,6 @@
                         android:paddingLeft="10dp"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
-
 
 
                 </LinearLayout>
@@ -146,12 +158,12 @@
                         android:textSize="15sp" />
 
                     <ImageButton
-                         android:id="@+id/eyeBtn"
+                        android:id="@+id/eyeBtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/eye_icon"
-                        android:background="@drawable/hide_password"/>
+                        android:background="@drawable/hide_password"
+                        android:src="@drawable/eye_icon" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -172,13 +184,13 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:paddingBottom="9dp"
-                android:paddingTop="7dp"
+                android:orientation="horizontal"
                 android:paddingLeft="15dp"
+                android:paddingTop="7dp"
 
                 android:paddingRight="15dp"
 
-                android:orientation="horizontal"
+                android:paddingBottom="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 app:layout_constraintEnd_toEndOf="parent"
@@ -188,20 +200,20 @@
                     android:id="@+id/settingsBtn"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginRight="-1dp"
+                    android:layout_weight="0"
                     android:background="@drawable/stg_btn_rect"
+                    android:onClick="showSettingsMenu"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:src="@drawable/settings_icon"
-                    android:onClick="showSettingsMenu"/>
+                    android:src="@drawable/settings_icon" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/forgotPassword"
                     android:layout_width="140.5dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginRight="-1dp"
+                    android:layout_weight="0"
                     android:background="@drawable/btn"
                     android:fontFamily="@font/inter_semibold"
                     android:text="@string/forgot_password"
@@ -213,8 +225,8 @@
                     android:id="@+id/registerButton"
                     android:layout_width="123dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginRight="-1dp"
+                    android:layout_weight="0"
                     android:background="@drawable/btn"
                     android:fontFamily="@font/inter_semibold"
                     android:text="@string/register"
@@ -231,8 +243,7 @@
                     android:background="@drawable/exit_btn"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:src="@drawable/exit_icon"
-                    />
+                    android:src="@drawable/exit_icon" />
 
             </LinearLayout>
 

@@ -6,7 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="empty"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="empty"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateIds" />
+
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="376dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -72,7 +99,7 @@
                         android:background="@color/stroke" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/person_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
@@ -148,10 +175,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/eye_icon"
-                        android:background="@drawable/hide_password"/>
+                        android:background="@drawable/hide_password"
+                        android:src="@drawable/eye_icon" />
 
                 </LinearLayout>
+
                 <View
                     android:id="@+id/view2"
                     android:layout_width="match_parent"
@@ -212,8 +240,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/eye_icon"
-                        android:background="@drawable/hide_password"/>
+                        android:background="@drawable/hide_password"
+                        android:src="@drawable/eye_icon" />
 
                 </LinearLayout>
 
@@ -258,7 +286,7 @@
                         android:background="@color/stroke" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName2"
+                        android:id="@+id/question"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
@@ -334,8 +362,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:src="@drawable/eye_icon"
-                        android:background="@drawable/hide_password"/>
+                        android:background="@drawable/hide_password"
+                        android:src="@drawable/eye_icon" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -356,13 +384,13 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:paddingBottom="9dp"
-                android:paddingTop="7dp"
+                android:orientation="horizontal"
                 android:paddingLeft="15dp"
+                android:paddingTop="7dp"
 
                 android:paddingRight="15dp"
 
-                android:orientation="horizontal"
+                android:paddingBottom="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 app:layout_constraintEnd_toEndOf="parent"
@@ -372,20 +400,20 @@
                     android:id="@+id/settingsBtn"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginRight="-1dp"
+                    android:layout_weight="0"
                     android:background="@drawable/stg_btn_rect"
+                    android:onClick="showSettingsMenu"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:src="@drawable/settings_icon"
-                    android:onClick="showSettingsMenu"/>
+                    android:src="@drawable/settings_icon" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/startSearch2"
+                    android:id="@+id/register_btn"
                     android:layout_width="263.5dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginRight="-1dp"
+                    android:layout_weight="0"
                     android:background="@drawable/btn"
                     android:fontFamily="@font/inter_semibold"
                     android:text="@string/register"
@@ -402,8 +430,7 @@
                     android:background="@drawable/exit_btn"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
-                    android:src="@drawable/exit_icon"
-                    />
+                    android:src="@drawable/exit_icon" />
 
             </LinearLayout>
 
