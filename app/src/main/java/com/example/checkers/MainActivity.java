@@ -2,16 +2,26 @@ package com.example.checkers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         ImageButton logButton = (ImageButton) findViewById(R.id.exitBtn);
         ImageButton eyeBtn = (ImageButton) findViewById(R.id.eyeBtn);
         EditText passInput = (EditText) findViewById(R.id.passInput);
+
+
 
 
         //___________Buttons____________//
@@ -72,9 +84,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSettingsMenu(View view) {
+
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+
         PopupMenu stMenu = new PopupMenu(this, view);
         MenuInflater inf = stMenu.getMenuInflater();
         inf.inflate(R.menu.settings_menu, stMenu.getMenu());
         stMenu.show();
+
+        String text = "text";
+        Log.i(text, "hey");
+
+       IventGet getIvent = new IventGet();
+
+       getIvent.getIvent();
+
+       text = getIvent.getTextView1();
+       textView2.setText(text);
+
     }
 }

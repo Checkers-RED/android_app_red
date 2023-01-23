@@ -5,7 +5,7 @@
     <string name="register">Регистрация</string>
     <string name="user_name">Имя пользователя:</string>
     <string name="password">Пароль:</string>
-    <string name="connection_status">Статус: Онлайн</string>
+    <string name="connection_status">Статус:</string>
     <string name="help_title">Помощь</string>
     <string name="repeat_password">Повторите пароль:</string>
     <string name="new_password">Новый пароль:</string>
