@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.checkers.Globals;
 import com.example.checkers.R;
 
 public class MainMenu extends AppCompatActivity {
@@ -45,6 +46,8 @@ public class MainMenu extends AppCompatActivity {
         ImageButton infoBtn = (ImageButton)  findViewById(R.id.infoBtn);
         Button inviteBtn = (Button) findViewById(R.id.inviteBtn);
         Button addFriendBtn = (Button) findViewById(R.id.addFriendBtn);
+        Button nickname = (Button) findViewById(R.id.nick);
+        Button score = (Button) findViewById(R.id.score);
 
         ScrollView notifications = (ScrollView) findViewById(R.id.notifications);
         ScrollView mainMenuList = (ScrollView) findViewById(R.id.main_menu_list);
@@ -54,6 +57,9 @@ public class MainMenu extends AppCompatActivity {
         ImageView searchIcon = (ImageView) findViewById(R.id.searchIcon);
         ImageView searchIcon2 = (ImageView) findViewById(R.id.searchIcon2);
         ImageView searchIcon3 = (ImageView) findViewById(R.id.searchIcon3);
+
+        nickname.setText(Globals.getNick());
+        score.setText(Globals.getScore());
 
         addFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override

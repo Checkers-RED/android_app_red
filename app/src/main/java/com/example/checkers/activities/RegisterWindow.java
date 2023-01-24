@@ -19,6 +19,7 @@ import com.example.checkers.Globals;
 import com.example.checkers.MainActivity;
 import com.example.checkers.R;
 import com.example.checkers.requests.user.Registration;
+import com.example.checkers.requests.user.Score;
 
 public class RegisterWindow extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class RegisterWindow extends AppCompatActivity {
             try {
                 Registration.register(Registration.stringRegister(nick, pass, ques, ans));
                 if (!Globals.getCurrentSession().equals("")) {
+                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);

@@ -1,6 +1,7 @@
 package com.example.checkers.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -13,9 +14,33 @@ import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.checkers.Globals;
 import com.example.checkers.R;
+import com.example.checkers.requests.user.Answering;
+import com.example.checkers.requests.user.Registration;
 
 public class ControlQuestion extends AppCompatActivity {
+
+    private void asyncAnswering(String token, String ans) {
+        Intent intent = new Intent(ControlQuestion.this, PasswordChange.class);
+
+        AsyncTask.execute(() -> {
+            try {
+                Answering.answer(Answering.stringAnsQues(token, ans));
+                if (!Globals.getToken().equals("")) {
+                    runOnUiThread(() -> {
+                        try {
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +52,15 @@ public class ControlQuestion extends AppCompatActivity {
         EditText answer = (EditText) findViewById(R.id.answer);
         ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
         Button continueButton = (Button) findViewById(R.id.continueButton);
+        EditText questionInput = (EditText) findViewById(R.id.question);
+        questionInput.setText(Globals.getQuestion());
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ControlQuestion.this, PasswordChange.class);
-                startActivity(intent);
+                String ans = answer.getText().toString();
+                String token = Globals.getToken();
+                asyncAnswering(token, ans);
             }
         });
 
