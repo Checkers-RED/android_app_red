@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainMenu">
+    tools:context=".activities.MainMenu"
+    android:background="@color/white">
 
 
     <LinearLayout
@@ -67,7 +68,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/forgotPassword"
+                    android:id="@+id/nick"
                     android:layout_width="130.5dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0"
@@ -80,7 +81,7 @@
                     android:textSize="15sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/registerButton"
+                    android:id="@+id/score"
                     android:layout_width="93dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0"

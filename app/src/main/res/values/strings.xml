@@ -38,6 +38,7 @@
     <string name="move_time">Время на ход (секунды)</string>
     <string name="invite">Пригласить</string>
     <string name="oh_shit_go_back">Вернуться назад</string>
+    <string name="back_to_authorize">Вернуться к окну входа</string>
     <string name="search_friend">Поиск друга</string>
     <string name="yout_turn">Ваш ход</string>
     <string name="last_moves">Последние ходы</string>

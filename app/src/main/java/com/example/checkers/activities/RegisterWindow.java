@@ -19,6 +19,7 @@ import com.example.checkers.Globals;
 import com.example.checkers.MainActivity;
 import com.example.checkers.R;
 import com.example.checkers.requests.user.Registration;
+import com.example.checkers.requests.user.Score;
 
 public class RegisterWindow extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class RegisterWindow extends AppCompatActivity {
             try {
                 Registration.register(Registration.stringRegister(nick, pass, ques, ans));
                 if (!Globals.getCurrentSession().equals("")) {
+                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);
@@ -48,7 +50,7 @@ public class RegisterWindow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_window);
 
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.goBack);
         ImageButton eyeBtn = (ImageButton) findViewById(R.id.eyeBtn);
         ImageButton eyeBtn2 = (ImageButton) findViewById(R.id.eyeBtn2);
         ImageButton eyeBtn3 = (ImageButton) findViewById(R.id.eyeBtn3);
@@ -57,9 +59,6 @@ public class RegisterWindow extends AppCompatActivity {
         EditText passRepeat = (EditText) findViewById(R.id.passRepeat);
         EditText question = (EditText) findViewById(R.id.question);
         EditText answer = (EditText) findViewById(R.id.answer);
-        TextView textView1 = (TextView) findViewById(R.id.textView1);
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,6 +21,7 @@ import com.example.checkers.activities.RegisterWindow;
 import com.example.checkers.activities.passwordRecovery;
 import com.example.checkers.requests.templates.GetTemplate;
 import com.example.checkers.requests.user.Authorization;
+import com.example.checkers.requests.user.Score;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Authorization.authorize(Authorization.stringAuthorize(nick, pass));
                 if (!Globals.getCurrentSession().equals("")) {
+                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);

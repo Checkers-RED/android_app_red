@@ -1,6 +1,7 @@
 package com.example.checkers.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -13,10 +14,36 @@ import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.checkers.Globals;
 import com.example.checkers.MainActivity;
 import com.example.checkers.R;
+import com.example.checkers.requests.user.Authorization;
+import com.example.checkers.requests.user.NewPass;
+import com.example.checkers.requests.user.Score;
 
 public class PasswordChange extends AppCompatActivity {
+
+    private void asyncNewPass(String token, String newPass) {
+        Intent intent = new Intent(PasswordChange.this, MainMenu.class);
+
+        AsyncTask.execute(() -> {
+            try {
+                NewPass.acceptPass(NewPass.stringNewPass(token, newPass));
+                if (!Globals.getCurrentSession().equals("")) {
+                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
+                    runOnUiThread(() -> {
+                        try {
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +54,18 @@ public class PasswordChange extends AppCompatActivity {
         ImageButton eyeBtn2 = (ImageButton) findViewById(R.id.eyeBtn2);
         EditText passNew = (EditText) findViewById(R.id.passNew);
         EditText passRepeat = (EditText) findViewById(R.id.passRepeat);
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.goBack);
         Button changePass = (Button) findViewById(R.id.changePass);
 
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(PasswordChange.this, MainActivity.class);
-                startActivity(intent);
+                String newPass = passNew.getText().toString();
+                String newPass2 = passRepeat.getText().toString();
+                if (newPass2.equals(newPass2)){
+                    String token = Globals.getToken();
+                    asyncNewPass(token, newPass);
+                }
 
             }
         });
