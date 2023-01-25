@@ -50,7 +50,7 @@ public class ControlQuestion extends AppCompatActivity {
 
         ImageButton eyeBtn = (ImageButton) findViewById(R.id.eyeBtn);
         EditText answer = (EditText) findViewById(R.id.answer);
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.goBack);
         Button continueButton = (Button) findViewById(R.id.continueButton);
         EditText questionInput = (EditText) findViewById(R.id.question);
         questionInput.setText(Globals.getQuestion());

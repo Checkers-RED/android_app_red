@@ -54,7 +54,7 @@ public class PasswordChange extends AppCompatActivity {
         ImageButton eyeBtn2 = (ImageButton) findViewById(R.id.eyeBtn2);
         EditText passNew = (EditText) findViewById(R.id.passNew);
         EditText passRepeat = (EditText) findViewById(R.id.passRepeat);
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.goBack);
         Button changePass = (Button) findViewById(R.id.changePass);
 
         changePass.setOnClickListener(new View.OnClickListener() {
