@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/friend_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/profile_image"
+            android:padding="1dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/avatar1_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="@string/nikname1"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/infoBtn"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:background="@drawable/info_btn"
+                android:src="@drawable/player_info_icon" />
+
+            <ImageButton
+                android:id="@+id/delete_btn"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:background="@drawable/delete_btn"
+                android:src="@drawable/delete_icon" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view21"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/stroke"
+        android:foregroundGravity="center_horizontal"
+        />
+
+    <LinearLayout
+        android:id="@+id/invite_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="5dp"
+            android:text="@string/rules_list"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+
+            android:textStyle="" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rules_btn"
+            android:fontFamily="@font/inter_semibold"
+            android:gravity="left"
+            android:paddingLeft="10dp"
+
+            android:paddingTop="15dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp"
+            android:text="@string/russian_checkers"
+
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/spinner"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="5dp"
+            android:text="@string/move_time"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+
+            android:textStyle="" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/minus_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/minus_btn_default"
+                    android:src="@drawable/minus_icon" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/time_view"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingTop="10dp"
+                    android:text="@string/sec_30"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/plus_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/plus_btn_default"
+                    android:src="@drawable/plus_icon" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/searchIcon3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="28dp"
+
+
+                android:src="@drawable/search_icon"
+                android:visibility="invisible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/inviteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="0dp"
+
+                android:background="@drawable/rules_btn"
+                android:fontFamily="@font/inter_semibold"
+                android:paddingLeft="10dp"
+
+                android:paddingTop="0dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="0dp"
+                android:text="@string/invite"
+
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+
+            android:layout_height="1dp"
+            android:background="@color/stroke"
+            android:foregroundGravity="center_horizontal" />
+
+    </LinearLayout>
+
+</LinearLayout>

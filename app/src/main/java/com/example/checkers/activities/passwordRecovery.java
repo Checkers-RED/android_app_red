@@ -45,9 +45,8 @@ public class passwordRecovery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_recovery);
-
         Button continueButton = (Button) findViewById(R.id.continueButton);
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.goBack);
         EditText usernameInput = (EditText) findViewById(R.id.editTextPersonName);
 
         backButton.setOnClickListener(new View.OnClickListener() {

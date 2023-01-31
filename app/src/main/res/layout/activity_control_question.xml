@@ -67,7 +67,7 @@
                     android:drawableLeft="@drawable/baack_icon"
                     android:drawablePadding="20dp"
                     android:fontFamily="@font/inter_semibold"
-                    android:gravity=""
+                    android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
