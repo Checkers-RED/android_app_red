@@ -21,6 +21,8 @@ import com.example.checkers.activities.RegisterWindow;
 import com.example.checkers.activities.passwordRecovery;
 import com.example.checkers.requests.templates.GetTemplate;
 import com.example.checkers.requests.user.Authorization;
+import com.example.checkers.requests.user.GettingFriends;
+import com.example.checkers.requests.user.GettingNotifications;
 import com.example.checkers.requests.user.Score;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,18 +33,22 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(() -> {
             try {
                 Authorization.authorize(Authorization.stringAuthorize(nick, pass));
+                Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
+                GettingFriends.getFriends(GettingFriends.stringGetFriends(Globals.getCurrentSession()));
+                GettingNotifications.getNotifications(GettingNotifications.stringGetNotifications(Globals.getCurrentSession()));
                 if (!Globals.getCurrentSession().equals("")) {
-                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);
                         } catch (Exception e) {
                             e.printStackTrace();
+                            Log.i("hey", "wrong");
                         }
                     });
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.i("hey", "wrong2");
             }
         });
     }

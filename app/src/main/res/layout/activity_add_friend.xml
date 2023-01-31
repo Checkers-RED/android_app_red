@@ -8,110 +8,137 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="376dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="5"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/search_friend"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:layout_weight="90"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layout_custom"
-            android:paddingLeft="1dp"
-            android:paddingTop="1dp"
-            android:paddingRight="1dp"
-            android:paddingBottom="1dp">
-
-            <LinearLayout
-                android:id="@+id/list"
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                >
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/search_friend"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/goBack"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/other_btn"
-                    android:drawableLeft="@drawable/baack_icon"
-                    android:drawablePadding="20dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:gravity=""
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/oh_shit_go_back"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:visibility="visible"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_custom"
+                android:paddingLeft="1dp"
+                android:paddingTop="1dp"
+                android:paddingRight="1dp"
+                android:paddingBottom="1dp">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout2"
+                    android:id="@+id/list"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/layout_inner_element"
-                    android:orientation="horizontal">
+                    android:layout_height="500dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    >
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="0"
-                        android:src="@drawable/user_icon" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/stroke" />
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/goBack"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-
-                        android:background="@null"
-                        android:ems="10"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/other_btn"
+                        android:drawableLeft="@drawable/baack_icon"
+                        android:drawablePadding="20dp"
                         android:fontFamily="@font/inter_semibold"
-                        android:hint="@string/user_name"
-                        android:inputType="textPersonName"
-                        android:paddingLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
                         android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/oh_shit_go_back"
+                        android:textAllCaps="false"
                         android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:visibility="visible"/>
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/layout_inner_element"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="11">
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:src="@drawable/user_icon"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/stroke" />
+
+                        <EditText
+                            android:id="@+id/search_user"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="78"
+                            android:background="@null"
+                            android:ems="10"
+                            android:fontFamily="@font/inter_semibold"
+                            android:hint="@string/user_name"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <ImageButton
+                            android:id="@+id/searchBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="11"
+                            android:background="@drawable/hide_password"
+                            android:src="@drawable/ic_baseline_search_24" />
+
+                    </LinearLayout>
 
                     <View
                         android:id="@+id/view"
@@ -124,173 +151,186 @@
                         app:layout_constraintTop_toTopOf="@+id/linearLayout"
                         tools:layout_editor_absoluteX="1dp" />
 
-                <LinearLayout
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
+                    <LinearLayout
+                        android:id="@+id/user_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:visibility="gone">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/profile_image"
-                        android:padding="1dp">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/profile_image"
+                            android:padding="1dp">
 
-                        <ImageView
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/avatar1_icon" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="176dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="14dp"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="@string/nikname1"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/avatar1_icon" />
+                            android:layout_marginTop="11dp"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <ImageButton
+                                android:id="@+id/infoBtn"
+                                android:layout_width="60dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/info_btn"
+                                android:src="@drawable/player_info_icon" />
 
-                    <TextView
-                        android:layout_width="176dp"
-                        android:layout_height="wrap_content"
+                            <ImageButton
+                                android:id="@+id/addFriendBtn"
+                                android:layout_width="60dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/delete_btn"
+                                android:src="@drawable/add_friend_icon" />
 
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="14dp"
-                        android:fontFamily="@font/inter_semibold"
-                        android:text="@string/nikname1"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="11dp"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
-
-                        <ImageButton
-                            android:id="@+id/infoBtn"
-                            android:layout_width="60dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/info_btn"
-                            android:src="@drawable/player_info_icon" />
-
-                        <ImageButton
-                            android:layout_width="60dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/delete_btn"
-                            android:src="@drawable/add_friend_icon" />
 
                     </LinearLayout>
 
-
                 </LinearLayout>
 
-            </LinearLayout>
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/stroke"
+                    android:foregroundGravity="center_horizontal"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                    tools:layout_editor_absoluteX="1dp" />
 
-                android:layout_height="1dp"
-                android:background="@color/stroke"
-                android:foregroundGravity="center_horizontal"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout"
-                tools:layout_editor_absoluteX="1dp" />
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="9dp"
+                    android:paddingRight="11dp"
+                    android:paddingBottom="9dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/list"
+                    tools:layout_editor_absoluteX="1dp">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="9dp"
-                android:paddingRight="11dp"
-                android:paddingBottom="9dp"
-                app:layout_constraintBottom_toBottomOf="@+id/list"
-                tools:layout_editor_absoluteX="1dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="-1dp"
+                        android:background="@drawable/profile_image_layout"
+                        android:clipToPadding="false">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="-1dp"
-                    android:background="@drawable/profile_image_layout"
-                    android:clipToPadding="false">
+                        <ImageButton
+                            android:id="@+id/settingsBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="-1dp"
+                            android:layout_weight="0"
+                            android:background="@drawable/img_prifile"
+                            android:clipToOutline="true"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:src="@drawable/avatar_icon" />
 
-                    <ImageButton
-                        android:id="@+id/settingsBtn"
-                        android:layout_width="match_parent"
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/forgotPassword"
+                        android:layout_width="130.5dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="-1dp"
                         android:layout_weight="0"
-                        android:background="@drawable/img_prifile"
-                        android:clipToOutline="true"
+                        android:background="@drawable/btn"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="@string/nikname"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/registerButton"
+                        android:layout_width="93dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="-2dp"
+                        android:layout_weight="0"
+                        android:background="@drawable/btn"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="@string/points"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <ImageButton
+                        android:id="@+id/bell"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="-1dp"
+                        android:layout_weight="0"
+
+                        android:background="@drawable/notifications_btn_default"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
-                        android:src="@drawable/avatar_icon" />
+                        android:src="@drawable/notifications_icon" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageButton
+                        android:id="@+id/settingsBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/forgotPassword"
-                    android:layout_width="130.5dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="-1dp"
-                    android:layout_weight="0"
-                    android:background="@drawable/btn"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="@string/nikname"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                        android:background="@drawable/exit_btn"
+                        android:onClick="showSettingsMenu"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:src="@drawable/settings_icon" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/registerButton"
-                    android:layout_width="93dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="-2dp"
-                    android:layout_weight="0"
-                    android:background="@drawable/btn"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="@string/points"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageButton
-                    android:id="@+id/bell"
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="-1dp"
-                    android:layout_weight="0"
-
-                    android:background="@drawable/notifications_btn_default"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:src="@drawable/notifications_icon" />
-
-                <ImageButton
-                    android:id="@+id/settingsBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-
-                    android:background="@drawable/exit_btn"
-                    android:onClick="showSettingsMenu"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:src="@drawable/settings_icon" />
-
-            </LinearLayout>
+                </LinearLayout>
 
 
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="5"/>
 
     </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

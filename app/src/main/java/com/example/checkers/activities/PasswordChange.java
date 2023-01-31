@@ -29,8 +29,8 @@ public class PasswordChange extends AppCompatActivity {
         AsyncTask.execute(() -> {
             try {
                 NewPass.acceptPass(NewPass.stringNewPass(token, newPass));
+                Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                 if (!Globals.getCurrentSession().equals("")) {
-                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);
@@ -73,7 +73,7 @@ public class PasswordChange extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PasswordChange.this, ControlQuestion.class);
+                Intent intent = new Intent(PasswordChange.this, MainActivity.class);
                 startActivity(intent);
             }
         });

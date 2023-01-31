@@ -1,9 +1,12 @@
 package com.example.checkers.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,9 +17,23 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.checkers.Globals;
+import com.example.checkers.MainActivity;
 import com.example.checkers.R;
+import com.example.checkers.requests.user.Authorization;
+import com.example.checkers.requests.user.DeletingFriend;
+import com.example.checkers.requests.user.FriendsAdapter;
+import com.example.checkers.requests.user.GettingFriends;
+import com.example.checkers.requests.user.InRankedMatch;
+import com.example.checkers.requests.user.IsMatch;
+import com.example.checkers.requests.user.IsNotRankedMatch;
+import com.example.checkers.requests.user.IsRankedMatch;
+import com.example.checkers.requests.user.NotifsAdapter;
+import com.example.checkers.requests.user.OutRankedMatch;
+import com.example.checkers.requests.user.Score;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -30,6 +47,66 @@ public class MainMenu extends AppCompatActivity {
     Boolean flagPlayTour = false;
     Boolean flagCreateTour = false;
     String[] countries = { "Русские шашки",  "Английские шашк", "Турецкие шашки"};
+    String rulesId = "1";
+
+    public void go(){
+        int a = 1+1;
+    }
+
+
+    private void asyncIsInRankedMatch(String current_session) {
+
+        AsyncTask.execute(() -> {
+            try {
+                IsRankedMatch.check(IsRankedMatch.stringIsRankedMatch(current_session));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void asyncIsNotInMatch(String current_session) {
+
+        AsyncTask.execute(() -> {
+            try {
+                IsNotRankedMatch.check(IsNotRankedMatch.stringIsNotMatch(current_session));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void asyncIsInMatch(String current_session) {
+
+        AsyncTask.execute(() -> {
+            try {
+                IsMatch.check(IsMatch.stringIsMatch(current_session));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void asyncInRanked(String current_session, String rules_id) {
+
+        AsyncTask.execute(() -> {
+            try {
+                InRankedMatch.starting(InRankedMatch.stringRanked(current_session, rules_id));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    private void asyncOutRanked(String current_session) {
+
+        AsyncTask.execute(() -> {
+            try {
+                OutRankedMatch.stopping(OutRankedMatch.stringOutRanked(current_session));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,52 +120,42 @@ public class MainMenu extends AppCompatActivity {
         Button playBotBtn = (Button) findViewById(R.id.playBotBtn);
         Button startSearchBot = (Button) findViewById(R.id.startSearchBot);
         Button startSearchRanked = (Button) findViewById(R.id.startSearch);
-        ImageButton infoBtn = (ImageButton)  findViewById(R.id.infoBtn);
-        Button inviteBtn = (Button) findViewById(R.id.inviteBtn);
+        //ImageButton infoBtn = (ImageButton)  findViewById(R.id.infoBtn);
+        //Button inviteBtn = (Button) findViewById(R.id.inviteBtn);
         Button addFriendBtn = (Button) findViewById(R.id.addFriendBtn);
         Button nickname = (Button) findViewById(R.id.nick);
         Button score = (Button) findViewById(R.id.score);
 
-        ScrollView notifications = (ScrollView) findViewById(R.id.notifications);
         ScrollView mainMenuList = (ScrollView) findViewById(R.id.main_menu_list);
         LinearLayout rankedMenu = (LinearLayout) findViewById(R.id.rankedMenu);
         LinearLayout botMenu = (LinearLayout) findViewById(R.id.botMenu);
-        LinearLayout friendMenu = (LinearLayout) findViewById(R.id.friendMenu);
+        //LinearLayout friendMenu = (LinearLayout) findViewById(R.id.friendMenu);
+        //LinearLayout friend = (LinearLayout) findViewById(R.id.listfriend);
+        LinearLayout friendView = (LinearLayout) View.inflate(this, R.layout.friend_element, null);
         ImageView searchIcon = (ImageView) findViewById(R.id.searchIcon);
         ImageView searchIcon2 = (ImageView) findViewById(R.id.searchIcon2);
-        ImageView searchIcon3 = (ImageView) findViewById(R.id.searchIcon3);
+        //ImageView searchIcon3 = (ImageView) findViewById(R.id.searchIcon3);
 
         nickname.setText(Globals.getNick());
         score.setText(Globals.getScore());
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_of_friends);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        FriendsAdapter adapterFriends = new FriendsAdapter(this, Globals.getFriends());
+        recyclerView.setAdapter(adapterFriends);
+
+        RecyclerView recyclerView1 = findViewById(R.id.notifs_list);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        recyclerView1.setLayoutManager(layoutManager2);
+        NotifsAdapter adapterNotifs = new NotifsAdapter(this, Globals.getNotifications());
+        recyclerView1.setAdapter(adapterNotifs);
+
 
         addFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, AddFriend.class);
                 startActivity(intent );
-            }
-        });
-
-        inviteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inviteBtn.setVisibility(View.GONE);
-                searchIcon3.setVisibility(View.VISIBLE);
-            }
-        });
-
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flagFriend = !flagFriend;
-                if(flagFriend){
-                    friendMenu.setVisibility(View.VISIBLE);
-                }
-                else{
-                    friendMenu.setVisibility(View.GONE);
-                    searchIcon3.setVisibility(View.INVISIBLE);
-                    inviteBtn.setVisibility(View.VISIBLE);
-                }
             }
         });
 
@@ -101,10 +168,12 @@ public class MainMenu extends AppCompatActivity {
                     startSearchRanked.setText(R.string.stop_search);
                     playTourBtn.setBackgroundResource(R.drawable.other_btn_default);
                     createTourBtn.setBackgroundResource(R.drawable.other_btn_default);
+                    asyncInRanked(Globals.getCurrentSession(), rulesId);
                 }
                 else{
                     searchIcon.setVisibility(View.GONE);
                     startSearchRanked.setText(R.string.start_search);
+                    asyncOutRanked(Globals.getCurrentSession());
                 }
             }
         });
@@ -185,12 +254,12 @@ public class MainMenu extends AppCompatActivity {
                 flagBell = !flagBell;
                 if(flagBell){
                     mainMenuList.setVisibility(View.GONE);
-                    notifications.setVisibility(View.VISIBLE);
+                    recyclerView1.setVisibility(View.VISIBLE);
                     bellBtn.setBackgroundResource(R.drawable.notifications_btn_active);
                 }
                 else{
                     mainMenuList.setVisibility(View.VISIBLE);
-                    notifications.setVisibility(View.GONE);
+                    recyclerView1.setVisibility(View.GONE);
                     bellBtn.setBackgroundResource(R.drawable.notifications_btn_default);
                 }
             }
@@ -216,15 +285,59 @@ public class MainMenu extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        rulesId = "1";
+                        break;
+                    case 1:
+                        rulesId = "2";
+                        break;
+                    case 2:
+                        rulesId = "3";
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         Spinner spinner2 = findViewById(R.id.spinner2);
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, countries);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter);
 
-        Spinner spinner3 = findViewById(R.id.spinner3);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, countries);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        rulesId = "1";
+                        break;
+                    case 1:
+                        rulesId = "2";
+                        break;
+                    case 2:
+                        rulesId = "3";
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //Spinner spinner3 = findViewById(R.id.spinner3);
+        //ArrayAdapter<String> adapter3 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, countries);
+        //adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spinner3.setAdapter(adapter);
 
     }
     public void showSettingsMenu(View view) {

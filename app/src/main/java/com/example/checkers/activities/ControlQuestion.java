@@ -15,6 +15,7 @@ import android.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.checkers.Globals;
+import com.example.checkers.MainActivity;
 import com.example.checkers.R;
 import com.example.checkers.requests.user.Answering;
 import com.example.checkers.requests.user.Registration;
@@ -67,7 +68,7 @@ public class ControlQuestion extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ControlQuestion.this, passwordRecovery.class);
+                Intent intent = new Intent(ControlQuestion.this, MainActivity.class);
                 startActivity(intent);
             }
         });

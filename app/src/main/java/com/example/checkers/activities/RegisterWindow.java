@@ -29,8 +29,8 @@ public class RegisterWindow extends AppCompatActivity {
         AsyncTask.execute(() -> {
             try {
                 Registration.register(Registration.stringRegister(nick, pass, ques, ans));
+                Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                 if (!Globals.getCurrentSession().equals("")) {
-                    Score.setScore(Score.stringCurrentSession(Globals.getCurrentSession()));
                     runOnUiThread(() -> {
                         try {
                             startActivity(intent);

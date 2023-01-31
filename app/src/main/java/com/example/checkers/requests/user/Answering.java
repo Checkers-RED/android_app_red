@@ -14,26 +14,26 @@ public class Answering {
     }
 
     public static void answer(String json){
-        ArrayList<String> response;
+            ArrayList<String> response;
 
-        try {
-            response = PostTemplate.makeResponse("/AnsQues", json);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+            try {
+                response = PostTemplate.makeResponse("/AnsQues", json);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
 
-        if (!response.get(0).equals("200")) {
-            return;
-        }
+            if (!response.get(0).equals("200")) {
+                return;
+            }
 
-        AnsQues deserializedJson;
-        try {
-            deserializedJson = Globals.gson.fromJson(response.get(1), AnsQues.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
+            AnsQues deserializedJson;
+            try {
+                deserializedJson = Globals.gson.fromJson(response.get(1), AnsQues.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
         Globals.setToken(deserializedJson.getNewToken());
     }
